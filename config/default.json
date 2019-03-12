@@ -1,0 +1,72 @@
+{
+  "host": "localhost",
+  "port": 3030,
+  "public": "../public/",
+  "paginate": {
+    "default": 10,
+    "max": 50
+  },
+  "authentication": {
+    "secret": "b357f973bd7b27b8ab0825a2bf2d3f9a4b241a62650945ab93049fd3e01d3263ad1fbf28de5f2dd69d4f2aadfc524d22530373cda8fc99b46a84b7d56dc5cdb3fe415e70e13557e13e1da08e839990612c923b9470a8afed449f0a09d7960e669b4b509ee3d23fe67dc817afd35e345a8cb73900925f63bf1214e065f78d6bd6a553a6874971ba14ff4a84a1db628f20e98213187903381977be08251f8b34c95be1067b8f76187d136e9c7e23f083c2748eefe3ac67c8fb533e0abcae9ba9f7016fdbe97b4129bc55d178b04cf96328508e1cfecb4a36891fa1ef8a0dcb6b455c96fcdd312d3cc734c4edf88fda244409eb25ee1dd63b10fa8888241f8d4f05",
+    "strategies": [
+      "jwt",
+      "local"
+    ],
+    "path": "/authentication",
+    "service": "users",
+    "jwt": {
+      "header": {
+        "typ": "access"
+      },
+      "audience": "https://yourdomain.com",
+      "subject": "anonymous",
+      "issuer": "feathers",
+      "algorithm": "HS256",
+      "expiresIn": "1d"
+    },
+    "local": {
+      "entity": "user",
+      "usernameField": "email",
+      "passwordField": "password"
+    },
+    "google": {
+      "clientID": "your google client id",
+      "clientSecret": "your google client secret",
+      "successRedirect": "/",
+      "scope": [
+        "profile openid email"
+      ]
+    },
+    "facebook": {
+      "clientID": "your facebook client id",
+      "clientSecret": "your facebook client secret",
+      "successRedirect": "/",
+      "scope": [
+        "public_profile",
+        "email"
+      ],
+      "profileFields": [
+        "id",
+        "displayName",
+        "first_name",
+        "last_name",
+        "email",
+        "gender",
+        "profileUrl",
+        "birthday",
+        "picture",
+        "permissions"
+      ]
+    },
+    "cookie": {
+      "enabled": true,
+      "name": "feathers-jwt",
+      "httpOnly": false,
+      "secure": false
+    }
+  },
+  "postgres": {
+    "client": "pg",
+    "connection": "postgres://postgres:@localhost:5432/turing-api"
+  }
+}
